@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi personita favorita ❤️</title>
+    <style>
+        body {
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            text-align: center;
+            color: #ff4d6d;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .contenedor {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(255, 77, 109, 0.15);
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #590d22;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .contador {
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            border: 1px dashed #ffb3c1;
+        }
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+        }
+        button:hover {
+            background-color: #c9184a;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>¡Hola, mi amor! 💖</h1>
+        <p>Esta página web la programé yo misma, línea por línea, pensando en ti y en lo mucho que te amo.</p>
+        
+        <p>Tiempo compartiendo momentos hermosos juntos:</p>
+        <!-- Cambia la fecha de abajo por el día que inició su noviazgo (Año, Mes-1, Día) -->
+        <!-- Ejemplo: 15 de Octubre de 2024 sería: new Date(2024, 9, 15) ya que Enero es 0 y Octubre es 9 -->
+        <div class="contador" id="tiempo">Calculando nuestro amor...</div>
+
+        <button onclick="mostrarMensaje()">Presiona aquí</button>
+    </div>
+
+    <script>
+        // CONFIGURA TU FECHA AQUÍ: (Año, Mes-1, Día)
+        // Nota: Los meses van de 0 a 11 (Enero es 0, Febrero es 1, Diciembre es 11)
+        const fechaInicio = new Date(2025, 0, 1); 
+
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicio;
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('tiempo').innerHTML = 
+                `${dias} días, ${horas}h, ${minutos}m y ${segundos}s`;
+        }
+
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+
+        function mostrarMensaje() {
+            alert("¡Eres lo mejor que me ha pasado! Gracias por cada sonrisa. Jamás lo olvides. 🥰🔐");
+        }
+    </script>
+
+</body>
+</html>

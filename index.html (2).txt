@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué hacemos hoy, mi amor? 💖</title>
+    <style>
+        body {
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            text-align: center;
+            color: #ff4d6d;
+            padding: 30px 15px;
+            margin: 0;
+        }
+        .contenedor {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
+        }
+        h1 {
+            font-size: 26px;
+            color: #590d22;
+            margin-bottom: 20px;
+        }
+        /* Estilos de los botones principales */
+        .btn-menu {
+            display: block;
+            width: 100%;
+            background-color: #ffffff;
+            color: #ff4d6d;
+            border: 2px solid #ffb3c1;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        .btn-menu:hover {
+            background-color: #ff4d6d;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+        }
+        /* Estilos de las pantallas secundarias */
+        .pantalla {
+            display: none;
+            animation: aparecer 0.4s ease;
+        }
+        @keyframes aparecer {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Botones de subopciones (Películas / Roblox) */
+        .btn-sub {
+            background-color: #ff758f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-sub:hover {
+            background-color: #c9184a;
+        }
+        /* Botón de regresar */
+        .btn-regresar {
+            background-color: #a4133c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+        p {
+            color: #590d22;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PANTALLA PRINCIPAL CON LAS 4 SECCIONES -->
+    <div class="contenedor" id="menu-principal">
+        <h1>¿Qué hacemos hoy, mi amor? 🧐✨</h1>
+        
+        <button class="btn-menu" onclick="irA('videollamada')">📱 Videollamada</button>
+        <button class="btn-menu" onclick="irA('pelicula')">🎬 Ver una Película</button>
+        <button class="btn-menu" onclick="irA('jugar')">🎮 Jugar Roblox</button>
+        <button class="btn-menu" onclick="irA('nada')">😴 Hoy no quiero hacer nada</button>
+    </div>
+
+    <!-- SECCIÓN 1: VIDEOLLAMADA -->
+    <div class="contenedor pantalla" id="pantalla-videollamada">
+        <h2>¡Qué bien elegiste! 😍📱</h2>
+        <p>Prepara tu camarita porque muero por ver tu carita hermosa hoy.</p>
+        <button class="btn-regresar" onclick="regresar()">Atrás</button>
+    </div>
+
+    <!-- SECCIÓN 2: PELÍCULA -->
+    <div class="contenedor pantalla" id="pantalla-pelicula">
+        <h2>¡Qué bien elegiste! 🎬🍿</h2>
+        <p>¿Qué género de película se te antoja ver hoy juntos?</p>
+        
+        <button class="btn-sub" onclick="mostrarFinal('Película de Acción 💥')">Acción</button>
+        <button class="btn-sub" onclick="mostrarFinal('Película de Animación 🧸')">Animación</button>
+        <button class="btn-sub" onclick="mostrarFinal('Película de Romance 💖')">Romance</button>
+        <br>
+        <button class="btn-regresar" onclick="regresar()">Atrás</button>
+    </div>
+
+    <!-- SECCIÓN 3: JUGAR ROBLOX -->
+    <div class="contenedor pantalla" id="pantalla-jugar">
+        <h2>¡Qué bien elegiste! 🎮👾</h2>
+        <p>¡Sii, vamos a Roblox! Elige qué tipo de juego quieres probar hoy:</p>
+        
+        <button class="btn-sub" onclick="mostrarFinal('Roblox: Puzzles 🧩')">Puzzles</button>
+        <button class="btn-sub" onclick="mostrarFinal('Roblox: Terror 👻')">Terror</button>
+        <button class="btn-sub" onclick="mostrarFinal('Roblox: Uno 🃏')">Uno</button>
+        <br>
+        <button class="btn-regresar" onclick="regresar()">Atrás</button>
+    </div>
+
+    <!-- SECCIÓN 4: HOY NO QUIERO HACER NADA -->
+    <div class="contenedor pantalla" id="pantalla-nada">
+        <h2>No acepto no hacer nada 🤭😏</h2>
+        <p>¡Esa opción está bloqueada por el amor de tu vida! Elige algo bonito para hacer hoy.</p>
+        <button class="btn-regresar" onclick="regresar()">Elegir otra cosa a la fuerza ❤️</button>
+    </div>
+
+    <!-- PANTALLA FINAL DE CONFIRMACIÓN -->
+    <div class="contenedor pantalla" id="pantalla-final">
+        <h2>¡Plan Confirmado! 🎉🥳</h2>
+        <p>Decidido, hoy haremos:</p>
+        <h3 id="plan-elegido" style="font-size: 22px; color: #a4133c;"></h3>
+        <p>¡Te amo muchísimo! Avísame para empezar. 🥰🔐</p>
+        <button class="btn-regresar" onclick="regresar()">Cambiar plan</button>
+    </div>
+
+    <script>
+        // Función para navegar entre secciones
+        function irA(pantallaId) {
+            document.getElementById('menu-principal').style.display = 'none';
+            document.getElementById('pantalla-' + pantallaId).style.display = 'block';
+        }
+
+        // Función para regresar al menú principal
+        function regresar() {
+            // Esconder todas las pantallas posibles
+            document.getElementById('pantalla-videollamada').style.display = 'none';
+            document.getElementById('pantalla-pelicula').style.display = 'none';
+            document.getElementById('pantalla-jugar').style.display = 'none';
+            document.getElementById('pantalla-nada').style.display = 'none';
+            document.getElementById('pantalla-final').style.display = 'none';
+            
+            // Mostrar menú principal
+            document.getElementById('menu-principal').style.display = 'block';
+        }
+
+        // Función para mostrar la elección final de películas o juegos
+        function mostrarFinal(textoPlan) {
+            document.getElementById('pantalla-pelicula').style.display = 'none';
+            document.getElementById('pantalla-jugar').style.display = 'none';
+            
+            document.getElementById('pantalla-final').style.display = 'block';
+            document.getElementById('plan-elegido').innerText = textoPlan;
+        }
+    </script>
+
+</body>
+</html>
